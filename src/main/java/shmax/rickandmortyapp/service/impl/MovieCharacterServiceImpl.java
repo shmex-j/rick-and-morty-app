@@ -60,7 +60,7 @@ public class MovieCharacterServiceImpl implements MovieCharacterService {
         return movieCharacterRepository.findAllByNameContainsIgnoreCase(name);
     }
 
-    private void saveDtosToDB(ApiResponseDto dto) {
+    void saveDtosToDB(ApiResponseDto dto) {
         Map<Long, ApiCharacterDto> characterDtos = Arrays.stream(dto.getResults())
                 .collect(Collectors.toMap(ApiCharacterDto::getId, Function.identity()));
         Set<Long> externalIds = characterDtos.keySet();
